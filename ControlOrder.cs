@@ -34,6 +34,15 @@ namespace APP
         /// 
         /// </summary>
 
+        public void Add(ClassData Data)
+        {
+            DataBase.Add(Data);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+
         public void LoadFile()
         {
             /// OpenFileDialogクラスのインスタンスを作成

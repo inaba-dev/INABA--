@@ -40,6 +40,7 @@ namespace APP
 
                 /// 読み出し
                 Datas.table.ReadXml(FileName);
+
                 return true;
             }
             catch
@@ -47,6 +48,35 @@ namespace APP
                 MessageBox.Show("予期せぬエラーが発生しました。", "Error");
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public void Add(ClassData Data)
+        {
+            /// データベース読み出し
+            Load();
+
+            /// データを追加する
+
+            DataRow data = Datas.table.NewRow();
+
+            data["UniqueNumber"] = (string)Data.UniqueNumber;
+            data["OrderDate"] = (DateTime)Data.OrderDate;
+            data["OrderNumber"] = (string)Data.OrderNumber;
+            data["Maker"] = (string)Data.Maker;
+            data["ProductName"] = (string)Data.ProductName;
+            data["DeliveryDate"] = (DateTime)Data.DeliveryDate;
+            data["Quantity"] = (int)Data.Quantity;
+            data["FixedQuantity"] = (int)Data.Quantity;
+            data["Status"] = (bool)Data.Status;
+
+            Datas.Add(data);
+
+            /// データベース書き込み
+            Save();
         }
 
         /// <summary>

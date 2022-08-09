@@ -15,7 +15,7 @@ namespace APP
         public string ProductName;      /// 型式
         public DateTime DeliveryDate;   /// 納期
         public int Quantity;            /// 数量
-        public bool Category;           /// カテゴリ 
+        public int FixedQuantity;       ///  
         public bool Status;             /// ステータス
     }
 }

@@ -66,22 +66,6 @@ namespace APP
         /// 
         /// </summary>
 
-        private void buttonStart_Click(object sender, EventArgs e)
-        {
-            FormReload();
-
-            FormResult FormResult = new FormResult();
-
-            if (FormResult.ShowDialog(this) == DialogResult.OK)
-            {
-
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-
         private void buttonOrderRegist_Click(object sender, EventArgs e)
         {
             FormReload();
@@ -100,6 +84,26 @@ namespace APP
 
             }
         }
+
+        private void buttonOrderManual_Click(object sender, EventArgs e)
+        {
+            FormRegist FormRegist = new FormRegist();
+
+            FormRegist.LoadTitle("注文登録画面");
+
+            if (FormRegist.ShowDialog(this) == DialogResult.OK)
+            {
+                ClassData data = FormRegist.GetParam();
+
+                ControlOrder ControlOrder = new ControlOrder();
+
+                ControlOrder.Add(data);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 
         private void buttonStockRegist_Click(object sender, EventArgs e)
         {
@@ -120,6 +124,21 @@ namespace APP
             }
         }
 
+        private void buttonStockManual_Click(object sender, EventArgs e)
+        {
+            FormRegist FormRegist = new FormRegist();
 
+            FormRegist.LoadTitle("入荷登録画面");
+            FormRegist.LoadUniqueKey();
+
+            if (FormRegist.ShowDialog(this) == DialogResult.OK)
+            {
+                ClassData data = FormRegist.GetParam();
+
+                ControlStock ControlStock = new ControlStock();
+
+                ControlStock.Add(data);
+            }
+        }
     }
 }

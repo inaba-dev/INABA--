@@ -39,6 +39,17 @@ namespace APP
         /// 
         /// </summary>
 
+        public static string CreateRandNumber()
+        {
+            byte[] buffer = Guid.NewGuid().ToByteArray();
+
+            return BitConverter.ToUInt32(buffer, 8).ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+
         public static int int2asc(int src)
         {
             if (src < 10) return (src + 0x30);

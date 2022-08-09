@@ -80,6 +80,9 @@
     <Compile Include="Component\SelectboxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Component\TextboxAlphabet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Config\ConfigClass.cs" />
     <Compile Include="ControlExcel.cs" />
     <Compile Include="ControlDataBase.cs" />
@@ -101,6 +104,12 @@
     <Compile Include="FormOrder.Designer.cs">
       <DependentUpon>FormOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRegist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegist.Designer.cs">
+      <DependentUpon>FormRegist.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +118,6 @@
     </Compile>
     <Compile Include="FormOrderFunc.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormResult.Designer.cs">
-      <DependentUpon>FormResult.cs</DependentUpon>
     </Compile>
     <Compile Include="Function.cs" />
     <Compile Include="Program.cs" />
@@ -137,11 +140,11 @@
     <EmbeddedResource Include="FormOrder.resx">
       <DependentUpon>FormOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRegist.resx">
+      <DependentUpon>FormRegist.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormResult.resx">
-      <DependentUpon>FormResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
