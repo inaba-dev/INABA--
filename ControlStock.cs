@@ -43,6 +43,15 @@ namespace APP
         /// 
         /// </summary>
 
+        public ClassData GetData(string UniqueNumber)
+        {
+            return DataBase.GetData(UniqueNumber);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+
         public void LoadFile()
         {
             /// OpenFileDialogクラスのインスタンスを作成

@@ -47,6 +47,7 @@
             this.textUniqueNumber = new APP.TextBoxAlphabet();
             this.textProductName = new APP.TextBoxAlphabet();
             this.textOrderNumber = new APP.TextBoxAlphabet();
+            this.checkStatus = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(245, 92);
+            this.label3.Location = new System.Drawing.Point(252, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 23);
             this.label3.TabIndex = 177;
@@ -66,7 +67,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(245, 151);
+            this.label2.Location = new System.Drawing.Point(252, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 23);
             this.label2.TabIndex = 178;
@@ -77,7 +78,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(245, 215);
+            this.label6.Location = new System.Drawing.Point(252, 217);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 23);
             this.label6.TabIndex = 179;
@@ -88,7 +89,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(245, 276);
+            this.label4.Location = new System.Drawing.Point(252, 278);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 23);
             this.label4.TabIndex = 180;
@@ -98,16 +99,16 @@
             // 
             this.textMaker.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textMaker.Font = new System.Drawing.Font("メイリオ", 12F);
-            this.textMaker.Location = new System.Drawing.Point(249, 118);
+            this.textMaker.Location = new System.Drawing.Point(256, 120);
             this.textMaker.Name = "textMaker";
-            this.textMaker.Size = new System.Drawing.Size(194, 24);
+            this.textMaker.Size = new System.Drawing.Size(240, 24);
             this.textMaker.TabIndex = 187;
             // 
             // dateDeliveryDate
             // 
             this.dateDeliveryDate.CalendarFont = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dateDeliveryDate.Font = new System.Drawing.Font("メイリオ", 11F);
-            this.dateDeliveryDate.Location = new System.Drawing.Point(249, 239);
+            this.dateDeliveryDate.Location = new System.Drawing.Point(256, 241);
             this.dateDeliveryDate.Name = "dateDeliveryDate";
             this.dateDeliveryDate.Size = new System.Drawing.Size(147, 29);
             this.dateDeliveryDate.TabIndex = 189;
@@ -116,7 +117,7 @@
             // 
             this.numericQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericQuantity.Font = new System.Drawing.Font("メイリオ", 12F);
-            this.numericQuantity.Location = new System.Drawing.Point(248, 302);
+            this.numericQuantity.Location = new System.Drawing.Point(255, 304);
             this.numericQuantity.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -137,9 +138,9 @@
             this.labelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelTitle.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelTitle.Location = new System.Drawing.Point(21, 27);
+            this.labelTitle.Location = new System.Drawing.Point(28, 29);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(422, 40);
+            this.labelTitle.Size = new System.Drawing.Size(468, 40);
             this.labelTitle.TabIndex = 191;
             this.labelTitle.Text = "XXXXXXXX";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -149,7 +150,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(17, 92);
+            this.label1.Location = new System.Drawing.Point(24, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 23);
             this.label1.TabIndex = 176;
@@ -160,7 +161,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Maroon;
-            this.label5.Location = new System.Drawing.Point(285, 154);
+            this.label5.Location = new System.Drawing.Point(292, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 193;
@@ -174,9 +175,9 @@
             this.buttonExec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExec.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Bold);
             this.buttonExec.ForeColor = System.Drawing.Color.White;
-            this.buttonExec.Location = new System.Drawing.Point(21, 363);
+            this.buttonExec.Location = new System.Drawing.Point(28, 365);
             this.buttonExec.Name = "buttonExec";
-            this.buttonExec.Size = new System.Drawing.Size(422, 61);
+            this.buttonExec.Size = new System.Drawing.Size(468, 61);
             this.buttonExec.TabIndex = 196;
             this.buttonExec.Text = "登録";
             this.buttonExec.UseVisualStyleBackColor = false;
@@ -192,7 +193,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(17, 155);
+            this.label7.Location = new System.Drawing.Point(24, 157);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 23);
             this.label7.TabIndex = 197;
@@ -203,7 +204,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(16, 215);
+            this.label10.Location = new System.Drawing.Point(23, 217);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 23);
             this.label10.TabIndex = 199;
@@ -214,7 +215,7 @@
             this.textOrderDate.BackColor = System.Drawing.Color.Silver;
             this.textOrderDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textOrderDate.Font = new System.Drawing.Font("メイリオ", 12F);
-            this.textOrderDate.Location = new System.Drawing.Point(21, 241);
+            this.textOrderDate.Location = new System.Drawing.Point(28, 243);
             this.textOrderDate.Name = "textOrderDate";
             this.textOrderDate.ReadOnly = true;
             this.textOrderDate.Size = new System.Drawing.Size(147, 24);
@@ -225,36 +226,49 @@
             this.textUniqueNumber.BackColor = System.Drawing.Color.Silver;
             this.textUniqueNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textUniqueNumber.Font = new System.Drawing.Font("メイリオ", 12F);
-            this.textUniqueNumber.Location = new System.Drawing.Point(21, 181);
+            this.textUniqueNumber.Location = new System.Drawing.Point(28, 183);
             this.textUniqueNumber.Name = "textUniqueNumber";
             this.textUniqueNumber.ReadOnly = true;
-            this.textUniqueNumber.Size = new System.Drawing.Size(194, 24);
+            this.textUniqueNumber.Size = new System.Drawing.Size(200, 24);
             this.textUniqueNumber.TabIndex = 198;
             // 
             // textProductName
             // 
             this.textProductName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textProductName.Font = new System.Drawing.Font("メイリオ", 12F);
-            this.textProductName.Location = new System.Drawing.Point(249, 180);
+            this.textProductName.Location = new System.Drawing.Point(256, 182);
             this.textProductName.Name = "textProductName";
-            this.textProductName.Size = new System.Drawing.Size(194, 24);
+            this.textProductName.Size = new System.Drawing.Size(240, 24);
             this.textProductName.TabIndex = 188;
             // 
             // textOrderNumber
             // 
             this.textOrderNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textOrderNumber.Font = new System.Drawing.Font("メイリオ", 12F);
-            this.textOrderNumber.Location = new System.Drawing.Point(21, 118);
+            this.textOrderNumber.Location = new System.Drawing.Point(28, 120);
             this.textOrderNumber.Name = "textOrderNumber";
-            this.textOrderNumber.Size = new System.Drawing.Size(194, 24);
+            this.textOrderNumber.Size = new System.Drawing.Size(200, 24);
             this.textOrderNumber.TabIndex = 185;
+            // 
+            // checkStatus
+            // 
+            this.checkStatus.AutoSize = true;
+            this.checkStatus.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkStatus.Location = new System.Drawing.Point(27, 304);
+            this.checkStatus.Name = "checkStatus";
+            this.checkStatus.Size = new System.Drawing.Size(109, 28);
+            this.checkStatus.TabIndex = 201;
+            this.checkStatus.Text = "ステータス";
+            this.checkStatus.UseVisualStyleBackColor = true;
+            this.checkStatus.Visible = false;
             // 
             // FormRegist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.ClientSize = new System.Drawing.Size(466, 452);
+            this.ClientSize = new System.Drawing.Size(524, 461);
+            this.Controls.Add(this.checkStatus);
             this.Controls.Add(this.textOrderDate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textUniqueNumber);
@@ -299,5 +313,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private TextBoxAlphabet textOrderDate;
+        private System.Windows.Forms.CheckBox checkStatus;
     }
 }

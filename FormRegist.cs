@@ -39,6 +39,18 @@ namespace APP
         /// 
         /// </summary>
 
+        public void SetParam(ClassData data)
+        {
+            textUniqueNumber.Text = data.UniqueNumber;
+            textOrderDate.Text = data.OrderDate.ToString("yyyy/MM/dd");
+            textOrderNumber.Text = data.OrderNumber;
+            textMaker.Text = data.Maker;
+            textProductName.Text = data.ProductName;
+            dateDeliveryDate.Value = data.DeliveryDate;
+            numericQuantity.Value = data.Quantity;
+            checkStatus.Checked = data.Status;
+        }
+
         public ClassData GetParam()
         {
             ClassData data = new ClassData();
@@ -51,7 +63,7 @@ namespace APP
             data.DeliveryDate = dateDeliveryDate.Value;
             data.Quantity = (int)numericQuantity.Value;
             data.FixedQuantity = 0;
-            data.Status = true;
+            data.Status = checkStatus.Checked;
 
             return data;
         }
@@ -82,14 +94,5 @@ namespace APP
             buttonExec.Enabled = valid;
             buttonExec.BackColor = valid ? Color.DarkOrange : Color.Gray;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-
-        //public void LoadTitle(string Text)
-        //{
-        //    labelTitle.Text = Text;
-        //}
     }
 }

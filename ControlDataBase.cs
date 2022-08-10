@@ -141,19 +141,19 @@ namespace APP
 
         public void Commit(string UniqueNumber, int FixedQuantity)
         {
-            foreach (DataRow data in Datas.table.Rows)
+            foreach (DataRow row in Datas.table.Rows)
             {
-                if ((string)data["UniqueNumber"] == UniqueNumber)
+                if ((string)row["UniqueNumber"] == UniqueNumber)
                 {
-                    if((bool)data["Status"] == true)
+                    if((bool)row["Status"] == true)
                     {
-                        data["Status"] = false;
-                        data["FixedQuantity"] = 0;
+                        row["Status"] = false;
+                        row["FixedQuantity"] = 0;
                     }
                     else
                     {
-                        data["Status"] = true;
-                        data["FixedQuantity"] = FixedQuantity;
+                        row["Status"] = true;
+                        row["FixedQuantity"] = FixedQuantity;
                     }
                     break;
                 }
@@ -164,16 +164,46 @@ namespace APP
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+
+        public ClassData GetData(string UniqueNumber)
+        {
+            ClassData data = new ClassData();
+
+            foreach (DataRow row in Datas.table.Rows)
+            {
+                if ((string)row["UniqueNumber"] == UniqueNumber)
+                {
+                    data.UniqueNumber = (string)row["UniqueNumber"];
+                    data.OrderDate = (DateTime)row["OrderDate"];
+                    data.OrderNumber = (string)row["OrderNumber"];
+                    data.Maker = (string)row["Maker"];
+                    data.ProductName = (string)row["ProductName"];
+                    data.DeliveryDate = (DateTime)row["DeliveryDate"];
+                    data.Quantity = (int)row["Quantity"];
+                    data.FixedQuantity = (int)row["FixedQuantity"];
+                    data.Status = (bool)row["Status"];
+
+                    return data;
+                }
+            }
+
+            /// データ保存
+            return null;
+        }
+
+        /// <summary>
         /// ステータス変更
         /// </summary>
 
         public void ChangeStatus(string UniqueNumber)
         {
-            foreach (DataRow data in Datas.table.Rows)
+            foreach (DataRow row in Datas.table.Rows)
             {
-                if ((string)data["UniqueNumber"] == UniqueNumber)
+                if ((string)row["UniqueNumber"] == UniqueNumber)
                 {
-                    data["Status"] = !(bool)data["Status"];
+                    row["Status"] = !(bool)row["Status"];
                     break;
                 }
             }
@@ -188,11 +218,11 @@ namespace APP
 
         public void Delete(string UniqueNumber)
         {
-            foreach (DataRow data in Datas.table.Rows)
+            foreach (DataRow row in Datas.table.Rows)
             {
-                if ((string)data["UniqueNumber"] == UniqueNumber)
+                if ((string)row["UniqueNumber"] == UniqueNumber)
                 {
-                    Datas.Delete((string)data["UniqueNumber"]);
+                    Datas.Delete((string)row["UniqueNumber"]);
                     break;
                 }
             }

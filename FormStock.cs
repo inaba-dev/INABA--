@@ -35,17 +35,19 @@ namespace APP
             DataGridViewColumn col7 = new DataGridViewColumn();
             DataGridViewColumn col8 = new DataGridViewColumn();
             DataGridViewImageColumn col9 = new DataGridViewImageColumn();
+            DataGridViewImageColumn col10 = new DataGridViewImageColumn();
 
-            dataGridView.setupColumnImg      (col0, 0, 100, "Status", "ステータス", "");
-            dataGridView.setupColumnTxt      (col1, 1, 120, "UniqueNumber", "識別番号", "");
-            dataGridView.setupColumnTxtCenter(col2, 2, 95,  "OrderDate", "注文日", "");
-            dataGridView.setupColumnTxt      (col3, 3, 150, "OrderNumber", "注文番号", "");
-            dataGridView.setupColumnTxtCenter(col4, 4, 133, "Maker", "メーカー", "");
-            dataGridView.setupColumnTxt      (col5, 5, 235, "ProductName", "型式", "");
-            dataGridView.setupColumnTxtCenter(col6, 6, 95,  "DeliveryDate", "納期", "");
-            dataGridView.setupColumnTxtCenter(col7, 7, 85,  "Quantity", "注文数", "");
-            dataGridView.setupColumnTxtCenter(col8, 8, 85,  "Delivery", "納品数", "");
-            dataGridView.setupColumnImg      (col9, 9, 100, "Delete", "削除", "");
+            dataGridView.setupColumnImg      (col0,  0,  100, "Status", "表示", "");
+            dataGridView.setupColumnTxt      (col1,  1,  120, "UniqueNumber", "識別番号", "");
+            dataGridView.setupColumnTxtCenter(col2,  2,  95,  "OrderDate", "注文日", "");
+            dataGridView.setupColumnTxt      (col3,  3,  150, "OrderNumber", "注文番号", "");
+            dataGridView.setupColumnTxtCenter(col4,  4,  133, "Maker", "メーカー", "");
+            dataGridView.setupColumnTxt      (col5,  5,  235, "ProductName", "型式", "");
+            dataGridView.setupColumnTxtCenter(col6,  6,  95,  "DeliveryDate", "納期", "");
+            dataGridView.setupColumnTxtCenter(col7,  7,  85,  "Quantity", "注文数", "");
+            dataGridView.setupColumnTxtCenter(col8,  8,  85,  "Delivery", "納品数", "");
+            dataGridView.setupColumnImg      (col9,  9,  100, "Edit", "編集", "");
+            dataGridView.setupColumnImg      (col10, 10, 100, "Delete", "削除", "");
 
             dataGridView.Columns.Add(col0);
             dataGridView.Columns.Add(col1);
@@ -57,6 +59,7 @@ namespace APP
             dataGridView.Columns.Add(col7);
             dataGridView.Columns.Add(col8);
             dataGridView.Columns.Add(col9);
+            dataGridView.Columns.Add(col10);
 
             /// DataGridViewの先頭列を固定
             dataGridView.Columns[0].Resizable = DataGridViewTriState.False;
@@ -69,6 +72,7 @@ namespace APP
             dataGridView.Columns[7].Resizable = DataGridViewTriState.False;
             dataGridView.Columns[8].Resizable = DataGridViewTriState.False;
             dataGridView.Columns[9].Resizable = DataGridViewTriState.False;
+            dataGridView.Columns[10].Resizable = DataGridViewTriState.False;
 
             /// ソート機能を追加
             dataGridView.Columns[1].SortMode = DataGridViewColumnSortMode.Automatic;
@@ -104,9 +108,9 @@ namespace APP
         {
             /// ステータス
 
-            selectStatus.Items.Add("－");
-            selectStatus.Items.Add("無効");
-            selectStatus.Items.Add("有効");
+            selectStatus.Items.Add("指定なし");
+            selectStatus.Items.Add("表示");
+            selectStatus.Items.Add("非表示");
             selectStatus.SelectedIndex = 0;
 
             /// 型番
@@ -116,7 +120,7 @@ namespace APP
                             orderby order.Field<string>("ProductName")
                             select order.Field<string>("ProductName")).Distinct();
 
-            selectProduct.Items.Add("-");
+            selectProduct.Items.Add("指定なし");
 
             foreach (var product in products) selectProduct.Items.Add(product);
 
@@ -129,7 +133,14 @@ namespace APP
                             orderby order.Field<string>("Maker")
                             select order.Field<string>("Maker")).Distinct();
 
-            foreach (var maker in makers) selectMaker.Items.Add(maker);
+            selectMaker.Items.Add("指定なし");
+
+            foreach (var maker in makers)
+            {
+                if(maker != "") selectMaker.Items.Add(maker);
+            }
+
+            selectMaker.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -158,7 +169,7 @@ namespace APP
             /// クエリ(有効/無効)
             if (selectStatus.SelectedIndex > 0)
             {
-                bool valid = selectStatus.SelectedItemEx() == "無効" ? false : true;
+                bool valid = selectStatus.SelectedItemEx() == "非表示" ? false : true;
                 query = execQueryStatus(query, valid);
             }
 
@@ -177,7 +188,7 @@ namespace APP
                 /// 
                 dataGridView.Rows.Add
                 (
-                    ((bool)row["Status"]) ? Properties.Resources.btn_valid : Properties.Resources.btn_invalid,
+                    ((bool)row["Status"]) ? Properties.Resources.btn_invalid : Properties.Resources.btn_valid,
                     row["UniqueNumber"],
                     date1.ToString("yyyy/MM/dd"),
                     row["OrderNumber"],
@@ -186,6 +197,7 @@ namespace APP
                     date2.ToString("yyyy/MM/dd"),
                     row["Quantity"],
                     row["Quantity"],
+                    Properties.Resources.btn_edit,
                     Properties.Resources.btn_delete
                 );
             }
@@ -298,9 +310,30 @@ namespace APP
                 ///
                 var index = dataGridView.Rows[e.RowIndex].Cells[1].Value;
 
-                if (dgv.Columns[e.ColumnIndex].Name == "ステータス")
+                if (dgv.Columns[e.ColumnIndex].Name == "表示")
                 {
                     StockDataBase.ChangeStatus((string)index);
+
+                    /// データベースから読込んで表示
+                    Reload();
+                }
+                else if (dgv.Columns[e.ColumnIndex].Name == "編集")
+                {
+                    FormRegist FormRegist = new FormRegist();
+                    
+                    FormRegist.LoadTitle("入荷編集画面");
+                    FormRegist.SetParam(StockDataBase.GetData((string)index));
+
+                    if (FormRegist.ShowDialog(this) == DialogResult.OK)
+                    {
+                        ClassData data = FormRegist.GetParam();
+
+                        /// 削除
+                        StockDataBase.Delete((string)index);
+
+                        /// 追加
+                        StockDataBase.Add(data);
+                    }
 
                     /// データベースから読込んで表示
                     Reload();
@@ -322,6 +355,29 @@ namespace APP
                     /// データベースから読込んで表示
                     Reload();
                 }
+                else
+                {
+                    /// 型番を取得
+                    var productnumber = dataGridView.Rows[e.RowIndex].Cells[5].Value;
+
+                    Console.WriteLine("[Debug] {0}", productnumber);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                /// 型番を取得
+                var productname = dataGridView.Rows[e.RowIndex].Cells[5].Value;
+
+                /// セレクトボックスに反映
+                selectProduct.SelectedItem = (string)productname;
             }
             catch
             {
